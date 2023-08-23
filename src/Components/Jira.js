@@ -7,11 +7,6 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const Jira = () => {
 
-    const obj = {
-        id : null, 
-        task : ""
-    }
-
     const [allTasks,setAllTasks] = useState([[], [], []]);
     const [input, setInput] = useState("")
 
@@ -26,19 +21,15 @@ const Jira = () => {
     const arrowLeftHandler = (taskToMove, index) => {
         setAllTasks((prev) => {
 
-
             let result = prev.map((elem, ind)=>{
                 
                 return ind ===  taskToMove.id - 1 ? [...elem, {...taskToMove, id : taskToMove.id - 1}]: ind === taskToMove.id ? elem.splice(index,1): elem  })
             return result
     })
     }
-
     const arrowRightHandler = (taskToMove, index) => {
            
-
         setAllTasks((prev) => {
-
 
             let result = prev.map((elem, ind)=>{
                 
@@ -48,17 +39,13 @@ const Jira = () => {
     })
     }
 
-    // useEffect(() => {
-
-    //     setAllTasks([...allTasks])
-
-    // }, [allTasks])
-
   return (
     <div>
 
-        <input type="text" onChange={(e) => setInput(e.target.value)}/>
+        <div className="inputFields">
+        <input type="text" className='inputText' onChange={(e) => setInput(e.target.value)}/>
         <button onClick={submitHandler}>Submit</button>
+        </div>
 
         <div className='tasksContainer'>
             <div className="tasks">
@@ -72,7 +59,6 @@ const Jira = () => {
 
                             {elem.id !== allTasks.length - 1 &&  <FaArrowRight className='icon' onClick={arrowRightHandler.bind(this, elem, index)}/>}
                          
-                           
                         </div>
                     ))
                 }
