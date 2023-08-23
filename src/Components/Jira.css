@@ -1,0 +1,36 @@
+
+
+.tasksContainer {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasksContainer > *{
+    width: 30%;
+    height: 70vh;
+    background-color: aliceblue;
+    border: 1px solid fuchsia;
+}
+
+.tasksContainer .heading{
+    background-color: black;
+    color: white;
+}
+.tasksContainer .individualTasks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.tasksContainer .individualTasks .icon {
+font-size: 1.8rem;
+padding: 15px;
+
+}
+
+.tasksContainer .individualTasks .icon :hover {
+    cursor: pointer;
+    color: blue;
+}
