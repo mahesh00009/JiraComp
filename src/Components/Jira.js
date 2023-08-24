@@ -10,8 +10,6 @@ const Jira = () => {
 
     const [allTasks,setAllTasks] = useState([[], [], []]);
     const [input, setInput] = useState("")
-    const [category, setCategory] = useState("task")
-    const [dates, time] = date();
 
     const submitHandler = () => {
         if(input){
