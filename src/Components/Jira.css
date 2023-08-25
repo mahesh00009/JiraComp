@@ -1,12 +1,11 @@
 .inputFields {
     display: flex;
-    width: 800px;
-    margin: 20px auto;
+    width: 80vw;
+    margin:20px auto;
     position: relative;
-
 }
 .inputText{
-    width: 100%;
+    width: 90%;
     height: 40px;
     outline: none;
     padding: 5px;
@@ -24,13 +23,18 @@
     border: 1px solid rgb(0, 0, 0);
     outline: none;
     height: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 .inputFields select {
     border-radius: 10px 0 0 10px;
     width: 100px;
     text-align: center;
     font-size: 1.3rem;
-    color: rgb(0, 0, 0);
+    color: rgb(218, 214, 214);
     border: none;
     outline: none;
 }
@@ -42,7 +46,7 @@
 .inputFields select option{
     font-size: 1.2rem;
     padding: 15px;
-    background-color: white;
+    background-color: rgb(4, 4, 4);
 }
 .inputFields select option > * {
     padding: 15px;
@@ -57,9 +61,22 @@
     width: 30%;
     height: 70vh;
     overflow-y: scroll;
-    background-color: aliceblue;
-    box-shadow: 5px 5px 15px rgb(222, 222, 222) ;
+    overflow-x: hidden;
+    background-color: rgb(216, 216, 217);
+
 }
+/* Hide the scrollbar for WebKit browsers (e.g., Chrome, Safari) */
+.tasksContainer > *::-webkit-scrollbar {
+    width: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.974);
+}
+
+
+.tasksContainer > *::-webkit-scrollbar-thumb {
+    background-color: rgba(191, 191, 191, 0.951);
+    border-radius: 10px;
+}
+
 
 .tasksContainer .heading{
     position: sticky;
@@ -67,19 +84,38 @@
     padding: 5px 0;
     background-color: rgb(39, 41, 37);
     color: white;
+    z-index: 999;
 }
+
 .tasksContainer .individualTasks{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     gap: 30px;
     margin-top: 20px;
     border-radius: 5px;
     transition: 0.2s ease;
+    position: relative;
+    padding: 10px 0;
+}
+.individualTasks .headingHandles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.individualTasks .title{
+    font-size: 2rem;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    background-color: red;
+    font-weight: 700;
 }
 
 .tasksContainer .individualTasks:hover{
-    box-shadow: 5px 15px 50px 5px rgb(147, 178, 255);
+    box-shadow: 5px 5px 10px 5px rgba(175, 198, 255, 0.693);
 
 }
 .tasksContainer .individualTasks .icon {
@@ -88,6 +124,18 @@ padding: 15px;
 cursor: pointer;
 transition: 0.2s ease;
 
+}
+
+.tasksContainer .icons{
+    display: flex;
+    color: rgb(44, 43, 42);
+    gap: 30px;
+    font-size: 2rem;
+}
+
+.tasksContainer .icons > * {
+    padding: 10px;
+    cursor: pointer;
 }
 
 .tasksContainer .individualTasks .icon:hover {
@@ -100,15 +148,30 @@ transition: 0.2s ease;
     margin-right: 5px;
 }
 .task {
-    background-color: rgba(4, 179, 4, 0.655);
-    box-shadow: 5px 15px 20px 5px rgb(226, 234, 255);
+    background-color:#4EC04E;
 }
 .story{
 
-    background-color: rgba(110, 110, 255, 0.664);
+    background-color: #9292F2;
     color: white;
 
 }
 .bug{
-    background-color: rgba(255, 78, 78, 0.662);
+    background-color: #F08484;
+}
+
+@media screen and (max-width: 750px) {
+    .tasksContainer {
+        flex-direction: column;
+    }
+    .tasksContainer{
+        margin-top: 40px;
+    }
+    .tasksContainer .heading{
+        width: 100%;
+    }
+    .tasksContainer * {
+        width: 90%;
+        margin: auto;
+    }
 }
