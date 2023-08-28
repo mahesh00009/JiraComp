@@ -1,6 +1,6 @@
 
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import date from './Date';
 import "./Jira.css"
 
@@ -13,6 +13,7 @@ const Jira = () => {
     const [input, setInput] = useState("")
     const [category, setCategory] = useState("task")
     const [dates, time] = date()
+    const inputRef = useRef(null)
 
     const submitHandler = () => {
         if (input) {
@@ -21,6 +22,8 @@ const Jira = () => {
                 return newArr
             })
         }
+        inputRef.current.focus()
+        setInput("")
     }
 
     const CategoryHandler = (e) => {
@@ -67,6 +70,10 @@ const Jira = () => {
             return result;
         });
     }
+
+    useEffect(() => {
+        inputRef.current.focus()
+    }, [])
     return (
         <div>
             <div className="inputFields">
@@ -75,7 +82,8 @@ const Jira = () => {
                     <option value="story">Story</option>
                     <option value="bug">Bug</option>
                 </select>
-                <input type="text" className={`inputText`} onChange={(e) => setInput(e.target.value)} placeholder='Add Task or Story' />
+
+                <input type="text" ref = {inputRef} className={`inputText`} onChange={(e) => setInput(e.target.value)} placeholder='Add Task or Story' value={input} />
 
                 <button onClick={submitHandler}>Go <FaChevronRight /></button>
 
@@ -87,7 +95,7 @@ const Jira = () => {
 
                     {
                         allTasks[0].map((elem, index) => (
-                            <IndividualTask elem = {elem} index = {index} arrowLeftHandler = {arrowLeftHandler} arrowRightHandler ={arrowRightHandler} length={allTasks.length}/>
+                            <IndividualTask elem = {elem} index = {index} arrowLeftHandler = {arrowLeftHandler} arrowRightHandler ={arrowRightHandler} allTasks = {allTasks} setAllTasks = {setAllTasks}/>
                         ))
                     }
 
@@ -98,7 +106,7 @@ const Jira = () => {
 
                     {
                         allTasks[1].map((elem, index) => (
-                            <IndividualTask elem = {elem} index = {index} arrowLeftHandler = {arrowLeftHandler} arrowRightHandler ={arrowRightHandler} length={allTasks.length}/>
+                            <IndividualTask elem = {elem} index = {index} arrowLeftHandler = {arrowLeftHandler} arrowRightHandler ={arrowRightHandler} allTasks={allTasks} setAllTasks = {setAllTasks}/>
                         ))
                     }
 
@@ -109,7 +117,7 @@ const Jira = () => {
 
                     {
                         allTasks[2].map((elem, index) => (
-                            <IndividualTask elem = {elem} index = {index} arrowLeftHandler = {arrowLeftHandler} arrowRightHandler ={arrowRightHandler} length={allTasks.length}/>
+                            <IndividualTask elem = {elem} index = {index} arrowLeftHandler = {arrowLeftHandler} arrowRightHandler ={arrowRightHandler} allTasks={allTasks} setAllTasks={setAllTasks}/>
                         ))
                     }
 
